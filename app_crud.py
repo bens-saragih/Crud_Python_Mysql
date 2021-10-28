@@ -1,15 +1,16 @@
 import mysql.connector
 from mysql.connector.errors import Error
 from mysql.connector import errorcode
- 
+from prettytable import PrettyTable
+
 
 class CRUD:
 	def __init__(self):
 		self.__localhost     = "localhost"
 		self.__username      = "root"
 		self.__password      = ""
-		self.__nama_database = "mahasiswa_db" 
-		self.__nama_table    = "mahasiswa"
+		self.__nama_database = "Mahasiswa_DB" 
+		self.__nama_table    = "Mahasiswa"
 		self.buatKoneksi()
 
 
@@ -69,6 +70,7 @@ class CRUD:
 					print("NIM Sudah digunakan,masukan NIM yang lain")
 					continue
 			if cursor.rowcount == 1:
+				print("\n")
 				print("Berhasil menambahkan",nama)
 				i+=1
 				
@@ -78,18 +80,27 @@ class CRUD:
 		cursor.execute("SELECT * FROM "+self.__nama_table+"")
 		hasil = cursor.fetchall()
 		print("\n")
-		print(" DAFTAR DATA MAHASISWA ".center(120,"="))
+		print(" DAFTAR DATA MAHASISWA ".center(70,"="))
 		print("\n")
-		print("NIM 		Nama 			  Fakultas 		  Prodi 			Alamat")
+		#print("NIM 		Nama 			  Fakultas 		  Prodi 			Alamat")
+		tabel = PrettyTable(["Nim", "Nama", "Fakultas", "Prodi", "Alamat"])
+		data = []
 		print("\n")
-		for i in hasil:
-			print(i[0],end='	')
-			print(i[1],end='		')
-			print(i[2],end='			')
-			print(i[3],end='		')
-			print(i[4])
 
-		print("="*120)
+		for i in hasil:
+
+			a = i[0]
+			b = i[1]
+			c = i[2]
+			d = i[3]
+			e = i[4]
+
+
+			tabel.add_row([a,b,c,d,e])
+			
+		print(tabel)
+		print("\n")
+		print("="*70)
 
 	def update(self):
 		i = 1
@@ -109,17 +120,18 @@ class CRUD:
 
 			
 				print("\n")
-				print("="*30," DATA MAHASISWA ",hasil[1],"="*30)
+				print("="*25," DATA MAHASISWA ",hasil[1],"="*25)
+				tabel = PrettyTable(["Nim", "Nama", "Fakultas", "Prodi", "Alamat"])
 				print("\n")
-				print("NIM 		Nama 			  Fakultas 		  Prodi 			Alamat")
+				a = hasil[0]
+				b = hasil[1]
+				c = hasil[2]
+				d = hasil[3]
+				e = hasil[4]
+				tabel.add_row([a,b,c,d,e])
+				print(tabel)
 				print("\n")
-				print(hasil[0],end='	')
-				print(hasil[1],end='		')
-				print(hasil[2],end='			')
-				print(hasil[3],end='		')
-				print(hasil[4])
-				print("\n")
-				print("="*120)
+				print("="*70)
 
 				nama = input("Masukan nama baru: ")
 				fakultas = input("Masukan fakultas baru: ")
@@ -131,6 +143,7 @@ class CRUD:
 				self.__db.commit()
 
 				if cursor.rowcount == 1:
+					print("\n")
 					print("Data yang bernama "+nama+" berhasil di update")
 					i+=1
 
@@ -150,6 +163,7 @@ class CRUD:
 			if cursor.rowcount == 0:
 				print("Nim tidak ditemukan")
 			else:
+				print("\n")
 				print("Data dari NIM ",nim," berhasil di hapus")
 				i+=1
 
@@ -168,17 +182,18 @@ class CRUD:
 				print("Tidak ada data yang cocok")
 			else:
 				print("\n")
-				print("="*30," DATA MAHASISWA ",hasil[1],"="*30)
+				print("="*25," DATA MAHASISWA ",hasil[1],"="*25)
+				tabel = PrettyTable(["Nim", "Nama", "Fakultas", "Prodi", "Alamat"])
 				print("\n")
-				print("NIM 		Nama 			  Fakultas 		  Prodi 			Alamat")
+				a = hasil[0]
+				b = hasil[1]
+				c = hasil[2]
+				d = hasil[3]
+				e = hasil[4]
+				tabel.add_row([a,b,c,d,e])
+				print(tabel)
 				print("\n")
-				print(hasil[0],end='	')
-				print(hasil[1],end='		')
-				print(hasil[2],end='			')
-				print(hasil[3],end='		')
-				print(hasil[4])
-				print("\n")
-				print("="*120)
+				print("="*70)
 				i+=1
 
 cruds = CRUD()
