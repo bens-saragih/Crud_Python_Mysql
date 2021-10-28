@@ -32,12 +32,11 @@ class Database:
 
 		cursor = db.cursor()
 		cursor.execute("CREATE DATABASE IF NOT EXISTS "+self.__nama_database)
-
 		if cursor.rowcount == 1:
-			return ("Database "+self.__nama_database+" berhasil dibuat")	
+			print ("Database "+self.__nama_database+" berhasil dibuat")	
 
 		else:
-			return ("Database "+self.__nama_database+" sudah ada")
+			print ("Database "+self.__nama_database+" sudah ada")
 
 
 
@@ -56,11 +55,8 @@ class Database:
 
 		cursor = self.__db.cursor()
 		cursor.execute("CREATE TABLE IF NOT EXISTS "+self.__nama_table+" (nim INT PRIMARY KEY, nama VARCHAR(50), fakultas VARCHAR(50), prodi VARCHAR(50), alamat VARCHAR(100))")
-		
-		if cursor.rowcount == 1:
-			print("Table "+self.__nama_table+" berhasil dibuat")
-		else:
-	 		print("Table "+self.__nama_table+" sudah ada")
+		print("Tabel "+self.__nama_table+" berhasil dibuat")
+
 
 
 
