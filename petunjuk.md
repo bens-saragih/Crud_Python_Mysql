@@ -26,7 +26,7 @@
 
 5. Buka file database.py,sama seperti langkah ke 1 , setting NamaServer,Username,Password,Nama Database,dan Nama Tabel yang di mulai dari baris 8 hingga baris 12
 
-6. Run/Eksekusi file database.py.
+6. Run/Eksekusi file app_crud.py.
 
 7. Program sudah bisa digunakan, untuk Create,Read,Update,Delete data Mahasiswa. Setelahnya jika ingin memulai program lagi, kita tidak perlu memulai dari langkah ke 2, tetapi langsung ke langkah nomor 5.Tetapi jika ingin membuat Database dan Table baru kita harus memulai dari langkah
 no 1 .
