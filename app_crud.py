@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector.errors import Error
 from mysql.connector import errorcode
 from prettytable import PrettyTable
-
+#tes
 
 class CRUD:
 	def __init__(self):
