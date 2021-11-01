@@ -1,2 +1,2 @@
 print("oke")
-print("okejuga")
+print("okejugsa")
